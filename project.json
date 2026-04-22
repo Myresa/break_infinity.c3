@@ -1,0 +1,22 @@
+{
+  "langrev": "1",
+  "warnings": [ "no-unused" ],
+  "dependency-search-paths": [ "lib" ],
+  "dependencies": [ ],
+  "authors": [ "Myresa <myresa@nebulawitch.net>" ],
+  "version": "0.1.0",
+  "sources": [ "src/**" ],
+  "test-sources": [ "test/**" ],
+  "build-dir": "build",
+  "output": "build",
+  "targets": {
+    "break_infinity.c3": {
+      "type": "executable",
+      "dependencies": [ ]
+    }
+  },
+  "cpu": "generic",
+  "opt": "O0",
+  "safe": true,
+  "sanitize": "none"
+}
