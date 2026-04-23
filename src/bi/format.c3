@@ -2,7 +2,7 @@ module bi;
 import bi::consts;
 import std::math;
 
-fn long BreakInfinity.decimal_places(&self)
+fn long BreakInfinity.decimal_places(BreakInfinity self)
 {
 	if (!self.is_finite()) return (long)double::nan;
 	if (self.e >= consts::MAX_SIGNIFICANT_DIGITS) return 0;
@@ -21,16 +21,42 @@ fn long BreakInfinity.decimal_places(&self)
 	return places > 0 ? places : 0;
 }
 
-fn String BreakInfinity.to_string(&self, uint places)
+fn String BreakInfinity.tto_exponential(BreakInfinity self, uint places)
+{
+	return self.to_exponential(tmem, places);
+}
+
+fn String BreakInfinity.to_exponential(BreakInfinity self, Allocator allocator, uint places)
+{
+	if (!self.is_finite()) return string::format(allocator, "%f", self.m);
+
+	if (self.e <= consts::N_EXP_LIMIT || self.m == 0)
+	{
+		return "0".concat(allocator, zeroes::trail_zeroes(places)).concat(allocator, "e0");
+	}
+	return "TODO";
+}
+
+fn String BreakInfinity.tto_string(BreakInfinity self, uint places)
+{
+	return self.to_string(tmem, places);
+}
+
+fn String BreakInfinity.to_string(BreakInfinity self, Allocator allocator, uint places)
 {
 	return "TODO";
 }
 
-fn String BreakInfinity.to_fixed(&self, uint places)
+fn String BreakInfinity.tto_fixed(BreakInfinity self, uint places)
 {
-	if (!self.is_finite()) return string::tformat("%f", self.m); //TEST
+	return self.to_fixed(tmem, places);
+}
 
-	if (self.e <= consts::N_EXP_LIMIT || self.m == 0) return "0".tconcat(zeroes::trail_zeroes(places));
+fn String BreakInfinity.to_fixed(BreakInfinity self, Allocator allocator, uint places)
+{
+	if (!self.is_finite()) return string::format(allocator, "%f", self.m);
+
+	if (self.e <= consts::N_EXP_LIMIT || self.m == 0) return "0".concat(allocator, zeroes::trail_zeroes(places));
 
 	if (self.e >= consts::MAX_SIGNIFICANT_DIGITS)
 	{
