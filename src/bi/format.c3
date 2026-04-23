@@ -4,7 +4,7 @@ import std::math;
 
 fn long BreakInfinity.decimal_places(&self)
 {
-	if (!self.is_finite()) return (long)double.nan;
+	if (!self.is_finite()) return (long)double::nan;
 	if (self.e >= consts::MAX_SIGNIFICANT_DIGITS) return 0;
 
 	double mant = self.m;

@@ -1,8 +1,8 @@
 module bi::consts;
 
 const long MAX_SIGNIFICANT_DIGITS = 17;
-const long EXP_LIMIT = long.max;
-const long N_EXP_LIMIT = long.min;
+const long EXP_LIMIT = long::max;
+const long N_EXP_LIMIT = long::min;
 const long NUMBER_EXP_MAX = 308;
 const long NUMBER_EXP_MIN = -324;
 const double ROUND_TOLERANCE = 1e-10;
