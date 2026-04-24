@@ -166,7 +166,7 @@ fn BreakInfinity pow10(double x)
 	return bi(math::pow(10, x - math::trunc(x)), (long)math::trunc(x));
 }
 
-fn BreakInfinity BreakInfinity.pow_double(BreakInfinity self, double x) @operator(^)
+fn BreakInfinity BreakInfinity.pow_double(BreakInfinity self, double x)
 {
 	if (self.m == 0) return self;
 
@@ -199,7 +199,7 @@ fn BreakInfinity BreakInfinity.pow_double(BreakInfinity self, double x) @operato
 	return result;
 }
 
-fn BreakInfinity BreakInfinity.pow_int(BreakInfinity self, int x) @operator(^)
+fn BreakInfinity BreakInfinity.pow_int(BreakInfinity self, int x)
 {
 	// 10 trivialized
 	if (self.m == 1 && self.e == 1) return bi_no_norm(1, x);
