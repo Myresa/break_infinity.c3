@@ -65,3 +65,22 @@ fn String BreakInfinity.to_fixed(BreakInfinity self, Allocator allocator, uint p
 	// return this.toNumber().toFixed(places);
 	return "TODO";
 }
+
+fn double BreakInfinity.to_number(BreakInfinity self)
+{
+	if (!self.is_finite()) return self.m;
+
+	if (self.e > consts::NUMBER_EXP_MAX) return self.m > 0 ? POSITIVE_INFINITY : NEGATIVE_INFINITY;
+
+	if (self.e < consts::NUMBER_EXP_MIN) return 0;
+
+	if (self.e == NUMBER_EXP_MIN) return self.m > 0 ? 5e-324 : -5e324;
+
+	double result = self.m * consts::powerOf10(self.e);
+	if (!math::is_finite(self.m) || self.e < 0) return result;
+
+	result_rounded = math::round(result);
+	if (math::abs(result_rounded - result) < consts::ROUND_TOLERANCE) return result_rounded;
+
+	return result;
+}
