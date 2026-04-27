@@ -27,6 +27,23 @@ fn BreakInfinity bi_val(double val) @inline
 	return *(BreakInfinity){val, 0}.normalize();
 }
 
+fn BreakInfinity? bi_str(String str)
+{
+	double m;
+	long e;
+	usz? epos = str.index_of_char('e');
+	if (catch epos)
+	{
+		m = str.to_double()!;
+		return *(BreakInfinity){m, e}.normalize();
+	}
+
+	m = str[0 : epos].to_double()!;
+	e = str[epos + 1 ..].to_long()!;
+
+	return *(BreakInfinity){m, e}.normalize();
+}
+
 fn BreakInfinity bi_no_norm(double mantissa, long exponent) @inline
 {
 	return (BreakInfinity){mantissa, exponent};
