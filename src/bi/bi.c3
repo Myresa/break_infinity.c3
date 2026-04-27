@@ -86,6 +86,12 @@ macro BreakInfinity.sign(BreakInfinity self)
 fn BreakInfinity* BreakInfinity.normalize(&self)
 {
 	if (self.m >= 1 && self.m < 10) return self;
+	if (self.m == 0)
+	{
+		self.m = 0;
+		self.e = 0;
+		return self;
+    }
 
 	long temp_exp = (long)math::floor(math::log10(math::abs(self.m)));
 	self.m = (temp_exp == consts::NUMBER_EXP_MIN) ?

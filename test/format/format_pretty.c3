@@ -1,4 +1,4 @@
-module bi_test;
+module bi_test::format;
 
 import bi;
 import bi::format;

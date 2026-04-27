@@ -20,7 +20,7 @@ double[*] powersOf10 = {1e-323,1e-322,1e-321,1e-320,1e-319,1e-318,1e-317,1e-316,
 
 const ulong INDEX_OF_0_IN_POWERS_OF_10 = 323;
 
-fn double powerOf10(ulong power)
+fn double powerOf10(long power)
 {
 	return powersOf10[power + INDEX_OF_0_IN_POWERS_OF_10];
 }
